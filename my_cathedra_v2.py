@@ -1,15 +1,4 @@
-import subprocess
-import sys
 
-def install_package(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-try:
-    from geopy.geocoders import Nominatim
-except ImportError:
-    
-    install_package('geopy')
-    from geopy.geocoders import Nominatim
 
 import streamlit as st
 from streamlit_option_menu import option_menu
