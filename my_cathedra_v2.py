@@ -1,3 +1,16 @@
+import subprocess
+import sys
+
+def install_package(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    from geopy.geocoders import Nominatim
+except ImportError:
+    
+    install_package('geopy')
+    from geopy.geocoders import Nominatim
+
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
@@ -12,14 +25,7 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import MinMaxScaler
-import sys
-import subprocess
 
-try:
-    import geopy
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "geopy"])
-    import geopy
 
 # Configuration de la page
 st.set_page_config(
