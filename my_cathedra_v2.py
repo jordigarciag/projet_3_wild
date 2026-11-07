@@ -22,6 +22,18 @@ st.set_page_config(
     page_icon="🎭",
     layout="wide")
 
+# Injection CSS pour forcer un fond gris clair (Streamlit Light Theme)
+st.markdown("""
+<style>
+[data-testid="stAppViewContainer"] {
+    background-color: #F0F2F6;
+}
+[data-testid="stHeader"] {
+    background-color: rgba(0,0,0,0);
+}
+</style>
+""", unsafe_allow_html=True)
+
 # En-tête simple centré
 st.markdown("<h1 style='text-align: center'>🎼 My Cathedra 🎻</h1>", unsafe_allow_html=True)
 
